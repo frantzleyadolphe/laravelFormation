@@ -11,6 +11,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
+use Filament\Tables\Filters\Filter;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 use Filament\Tables\Columns\TextColumn;
@@ -59,7 +60,9 @@ class PostResource extends Resource
                 BooleanColumn::make('is_published')
             ])
             ->filters([
-                //
+                //fonksyon sa pemet mwen filtrer tablo an poum jwen tout post ki published yo
+                Filter::make('Published')
+                ->query(fn (Builder $query): Builder => $query->where('is_published', true))
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
