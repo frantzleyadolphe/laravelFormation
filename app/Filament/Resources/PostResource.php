@@ -62,7 +62,9 @@ class PostResource extends Resource
             ->filters([
                 //fonksyon sa pemet mwen filtrer tablo an poum jwen tout post ki published yo
                 Filter::make('Published')
-                ->query(fn (Builder $query): Builder => $query->where('is_published', true))
+                ->query(fn (Builder $query): Builder => $query->where('is_published', true)),
+                Filter::make('Unpublished')
+    ->query(fn (Builder $query): Builder => $query->where('is_published', false))
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
