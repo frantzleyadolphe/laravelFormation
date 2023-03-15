@@ -31,7 +31,9 @@ class CategoryResource extends Resource
         return $form
             ->schema([
                 Card::make()->schema([
-                    TextInput::make('name')->reactive()->afterStateUpdated(function (Closure $set, $state) {
+                    TextInput::make('name')->reactive()
+                    ->afterStateUpdated(function (Closure $set, $state)
+                    {
                         $set('slug', Str::slug($state));
                     })->required(),
                 TextInput::make('slug')->required()])
@@ -44,11 +46,8 @@ class CategoryResource extends Resource
             ->columns([
                 //kod pou w aficher data yo
                 TextColumn::make('id')->limit(50),
-                TextColumn::make('name')->limit(50),
-                TextColumn::make('slug')->limit(50)
-            ])
-            ->filters([
-                //
+                TextColumn::make('name')->limit(50)->searchable(),
+                TextColumn::make('slug')->limit(50)->searchable()
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -61,7 +60,6 @@ class CategoryResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
             PostsRelationManager::class,
         ];
     }
