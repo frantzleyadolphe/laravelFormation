@@ -22,6 +22,7 @@ use Filament\Tables\Columns\BooleanColumn;
 use App\Filament\Resources\PostResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\PostResource\RelationManagers;
+use App\Filament\Resources\PostResource\Widgets\StatsOverview;
 use App\Filament\Resources\PostResource\RelationManagers\TagsRelationManager;
 
 class PostResource extends Resource
@@ -78,6 +79,13 @@ class PostResource extends Resource
     {
         return [
             TagsRelationManager::class
+        ];
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            StatsOverview::class
         ];
     }
 
