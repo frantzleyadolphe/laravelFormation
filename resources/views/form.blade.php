@@ -11,5 +11,7 @@
 <input type="text" name="content" id="">
 
 <input type="submit" value="enregistrer">
+
 </form>
+
 @endsection

@@ -12,7 +12,7 @@ class PostController extends Controller
         //avec cette fonction static j ai pu recuperer  toutes les donnees presentes en base de donnee en faisant ::all()
         $posts= Post::all();
         return view('articles', [
-            'posts'=>$posts
+            'posts'=> $posts
         ]);
     }
 
@@ -46,4 +46,6 @@ class PostController extends Controller
     {
         return view('contact');
     }
+
+
 }
